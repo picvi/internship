@@ -1,0 +1,26 @@
+{
+  "name": "internship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/picvi/internship.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/picvi/internship/issues"
+  },
+  "homepage": "https://github.com/picvi/internship#readme",
+  "devDependencies": {
+    "eslint-prettier-init": "^0.8.0"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^14.2.0"
+  }
+}
