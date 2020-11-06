@@ -16,17 +16,19 @@ let phoneBook = {
     this.finder(name) === undefined ? console.log("Такого контакта нету") : console.log(item);
   }, 
   delete(name) {
-    if (this.finder(name) !== undefined) {
+    if (this.finder(name) instanceof Contact) {
       this.contacts.splice(this.contacts.indexOf(name), 1);
     }
   }
 }
+
 Object.freeze(phoneBook);
 
 function Contact(name, phone) {
   this.name = name;
   this.phone = phone;
 }
+
 phoneBook.owner = "Anonim";
 
 phoneBook.write('John Smith', '325');

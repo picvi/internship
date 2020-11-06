@@ -1,8 +1,7 @@
 function calculator(aa, bb, operator = '+') {
-  const a = Number(aa);
-  const b = Number(bb)
-    if (Number(aa, bb)) {
-      Number(a, b)
+  const a = parseInt(aa);
+  const b = parseInt(bb);
+    if (+a && b) {
       switch (operator) {
       case '+':
         return a + b
@@ -21,4 +20,5 @@ function calculator(aa, bb, operator = '+') {
       console.log('Введен неверный формат данных')
   }
 }
-console.log(calculator('2', 4, 'pow'))
+
+console.log(calculator('4px', 4, '+'))
