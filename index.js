@@ -1,38 +1,51 @@
-let data = ['cd', true, null, undefined, "snfso", 35, false,'a', true, true, false, 'bss', 453, 3, null, {a: 123}, undefined]
-let method = ['undefined', 'boolean', 'number', 'null', 'string', 'object']
+function date(dateInfo) {
+  const data = {
+    date: new Date(dateInfo),
 
-function sort(arrayWithData, sortMethod) {
-  const undef = {};
-
-  function helper(a) {
-    if (a === null) {
-      return "null";
-    } 
-    if (a === undef) {
-      return "undefined";
-    } else {
-      return typeof a;
-    }
-  }
-
-  const newArray = arrayWithData.map(element => {
-    return element === undefined ? element = undef : element;
-  })
-  .sort((a, b) => {
-    if (sortMethod.indexOf(helper(a)) === sortMethod.indexOf(helper(b))) {
-      if (helper(a) && helper(b) === "boolean") {
-        return a ? -1 : 1;
+    add(numbers, stringData) {
+      switch (stringData) {
+        case 'minutes':
+          this.date.setMinutes(this.date.getMinutes() + numbers)
+          break
+        case 'hours':
+          this.date.setHours(this.date.getHours() + numbers)
+          break
+        case 'days':
+          this.date.setDate(this.date.getDate() + numbers)
+          break
+        case 'months':
+          this.date.setMonth(this.date.getMonth() + numbers + 1)
+          break
+        case 'years':
+          this.date.setFullYear(this.date.getFullYear() + numbers)
+          break
       }
-      return a > b ? 1 : -1;
-    }
-    return sortMethod.indexOf(helper(a)) > sortMethod.indexOf(helper(b)) ? 1 : -1;
-    })
-  .map(element => {
-    return element === undef ? element = undefined : element;
-    })
-    
-  return newArray;
+      return data;
+    }, 
+
+    subtract(numbers, stringData) {
+      switch (stringData) {
+        case 'minutes':
+          this.date.setMinutes(this.date.getMinutes() - numbers)
+          break
+        case 'hours':
+          this.date.setHours(this.date.getHours() - numbers)
+          break
+        case 'days':
+          this.date.setDate(this.date.getDate() - numbers)
+          break
+        case 'months':
+          this.date.setMonth(this.date.getMonth() - numbers + 1)
+          break
+        case 'years':
+          this.date.setFullYear(this.date.getFullYear() - numbers)
+          break
+      }
+      return this
+    },
+  }
+  return data;
 }
 
-const result = sort(data, method);
-console.log(result)
+const dayX = date('2020-11-01 13:45');
+console.log(dayX.subtract(30, 'days').add(10, 'years'));
