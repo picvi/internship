@@ -7,6 +7,7 @@ let phoneBook = {
 
   read() {
     console.log(this.contacts);
+    return this.contacts;
   },
   write(name, phone) {
     this.finder(name) === undefined ? this.contacts.push(new Contact(name, phone)) :
@@ -33,7 +34,7 @@ phoneBook.owner = "Anonim";
 
 phoneBook.write('John Smith', '325');
 phoneBook.write('John Smith', '325');
-phoneBook.read();
+
 phoneBook.find('Jo Smith');
 phoneBook.write('Jo Smith', '325');
 phoneBook.read();
@@ -41,3 +42,4 @@ phoneBook.delete('Jo Smith');
 phoneBook.read();
 
 console.log(phoneBook)
+

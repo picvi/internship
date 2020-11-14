@@ -1,51 +1,33 @@
 function date(dateInfo) {
   const data = {
     date: new Date(dateInfo),
+    measures: {
+      years: 'FullYear',
+      months: 'Month',
+      days: 'Date',
+      hours: 'Hours',
+      minutes: 'Minutes',
+    },
+    set: 'set',
+    get: 'get',
 
-    add(numbers, stringData) {
-      switch (stringData) {
-        case 'minutes':
-          this.date.setMinutes(this.date.getMinutes() + numbers)
-          break
-        case 'hours':
-          this.date.setHours(this.date.getHours() + numbers)
-          break
-        case 'days':
-          this.date.setDate(this.date.getDate() + numbers)
-          break
-        case 'months':
-          this.date.setMonth(this.date.getMonth() + numbers + 1)
-          break
-        case 'years':
-          this.date.setFullYear(this.date.getFullYear() + numbers)
-          break
-      }
+    add(number, measure) {
+      this.date[this.set + this.measures[measure]](number + this.date[this.get + this.measures[measure]]());
       return data;
-    }, 
+    },
 
-    subtract(numbers, stringData) {
-      switch (stringData) {
-        case 'minutes':
-          this.date.setMinutes(this.date.getMinutes() - numbers)
-          break
-        case 'hours':
-          this.date.setHours(this.date.getHours() - numbers)
-          break
-        case 'days':
-          this.date.setDate(this.date.getDate() - numbers)
-          break
-        case 'months':
-          this.date.setMonth(this.date.getMonth() - numbers + 1)
-          break
-        case 'years':
-          this.date.setFullYear(this.date.getFullYear() - numbers)
-          break
-      }
-      return this
+    subtract(number, measure) {
+      this.date[this.set + this.measures[measure]](-number + this.date[this.get + this.measures[measure]]());
+      return data;
+    },
+
+    value() {
+      return this.date.toLocaleString('ru-RU');
     },
   }
   return data;
 }
 
-const dayX = date('2020-11-01 13:45');
-console.log(dayX.subtract(30, 'days').add(10, 'years'));
+const dayX = date('2020-11-01 10:45');
+dayX.add(3, 'hours').add(30, 'minutes').add(10, 'years').subtract(1, 'months');
+console.log(dayX.value());
